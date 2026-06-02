@@ -60,9 +60,23 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {
-        //
+        // 1. Validamos los datos (nota que usamos 'nombre' y no 'titulo')
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required'
+        ]);
+
+        // 2. Buscamos el proyecto
+        $proyecto = Project::find($id);
+
+        // 3. Actualizamos los datos
+        $proyecto->update($request->all());
+
+        // 4. Redirigimos a la lista de proyectos con un mensaje
+        return redirect()->route('projects.index')
+            ->with('success', 'Proyecto actualizado satisfactoriamente.');
     }
 
     /**

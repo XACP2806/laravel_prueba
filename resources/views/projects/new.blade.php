@@ -37,7 +37,7 @@
             <div class="col-md-2">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gestión de Proyectos</a>
+                        <a class="nav-link" href="{{ url('/projects') }}">Gestión de Proyectos</a>
                     </li>
                 </ul>
             </div>
